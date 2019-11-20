@@ -45,38 +45,15 @@ $(function(){
 	});
 
 	var updateParamater = function(){
-		p['speed'] = 6;
-		p['duration'] = Number($('.duration_param').eq(0).text());
+		p['speed'] = 20;
+		p['duration'] = 1;
 		p['stopImageNumber'] = Number($('.stop_image_number_param').eq(0).text());
 		rouletter.roulette('option', p);	
 	}
 	var updateSpeed = function(speed){
 		$('.speed_param').text(speed);
 	}
-	$('#speed').slider({
-		min: 1,
-		max: 30,
-		value : 20,
-		slide: function( event, ui ) {
-			updateSpeed(ui.value);
-			updateParamater();
-		}
-	});
-	updateSpeed($('#speed').slider('value'));
 
-	var updateDuration = function(duration){
-		$('.duration_param').text(duration);
-	}
-	$('#duration').slider({
-		min: 2,
-		max: 10,
-		value : 3,
-		slide: function( event, ui ) {
-			updateDuration(ui.value);
-			updateParamater();
-		}
-	});
-	updateDuration($('#duration').slider('value'));
 
 	var updateStopImageNumber = function(stopImageNumber) {
 		$('.image_sample').children().css('opacity' , 0.2);
