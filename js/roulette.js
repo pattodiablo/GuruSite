@@ -1,5 +1,6 @@
 (function($) {
 	var Roulette = function(options) {
+
 		var defaultSettings = {
 			maxPlayCount : null, // x >= 0 or null
 			speed : 10, // x > 0
@@ -37,6 +38,7 @@
 		var p = $.extend({}, defaultSettings, options, defaultProperty);
 
 		var reset = function() {
+
 			p.maxDistance = defaultProperty.maxDistance;
 			p.slowDownStartDistance = defaultProperty.slowDownStartDistance;
 			p.distance = defaultProperty.distance;
@@ -64,6 +66,7 @@
 		}
 
 		var roll = function() {
+
 			var speed_ = p.speed;
 
 			if (p.isRunUp) {
@@ -101,6 +104,7 @@
 		}
 
 		var init = function($roulette) {
+
 			$roulette.css({ 'overflow' : 'hidden' });
 			defaultProperty.originalStopImageNumber = p.stopImageNumber;
 			if (!p.$images) {
@@ -135,12 +139,13 @@
 		}
 
 		var start = function() {
+			console.log('again');
 			p.playCount++;
 			if (p.maxPlayCount && p.playCount > p.maxPlayCount) {
 				return;
 			}
 			p.stopImageNumber = $.isNumeric(defaultProperty.originalStopImageNumber) && Number(defaultProperty.originalStopImageNumber) >= 0 ?
-									Number(defaultProperty.originalStopImageNumber) : Math.floor(Math.random() * p.imageCount);
+									Number(Math.ceil(Math.random()*4)) : Math.floor(Math.random() * p.imageCount);
 			p.startCallback();
 			roll();
 			p.slowDownTimer = setTimeout(function(){
